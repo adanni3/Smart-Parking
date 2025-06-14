@@ -11,20 +11,27 @@ cloudinary.config({
 });
 
 // Configure CloudinaryStorage
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "parking_lot_images", // 
-    format: async (req, file) => "jpeg", // or use file.mimetype.split("/")[1] for dynamic format
-    public_id: (req, file) => {
-      const timestamp = Date.now();
-      const lotName = req.body.lotName || "unknown_lot";
-      return `${lotName}_${timestamp}`; // ✅ Ensures uniqueness
-    },
-  },
-});
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: "smart-parking", // 
+//     format: async (req, file) => "jpeg", // or use file.mimetype.split("/")[1] for dynamic format
+//     public_id: (req, file) => {
+//       const timestamp = Date.now();
+//       const lotName = req.body.lotName || "unknown_lot";
+//       return `${lotName}_${timestamp}`; // ✅ Ensures uniqueness
+//     },
+//   },
+// });
+
+// After result is "changed"
+// const cloudResult = await cloudinary.v2.uploader.upload(croppedPath, {
+//   folder: 'smart-parking',
+//   public_id: `${lotName}-${Date.now()}`
+// });
+
 
 // Configure Multer
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
-module.exports = upload;
+module.exports = cloudinary;

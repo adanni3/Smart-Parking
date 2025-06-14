@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const ParkingSchema = new mongoose.Schema({
 //More input needed like name and all
   lotName: { type: String, required: true },
-  occupied: { type: Boolean, required: true},
+  status: { type: Boolean, required: true},
   imageUrl: { type: String, required: true },  
   timestamp: {
     type: Date,

@@ -35,9 +35,23 @@ const createLot = async (lotData) => {
     return lots;
   };
 
+  const getLastLot = async (lotName) => {
+  try {
+    const latestLot = await Lot.findOne({ lotName }).sort({ timestamp: -1 });
+    return latestLot;
+  } catch (err) {
+    logger.error(`Error fetching last lot for ${lotName}:`, err);
+    const error = new Error("Failed to retrieve last lot state");
+    error.status = 500;
+    throw error;
+  }
+};
+
+
 
   module.exports = {
     getLotHistory,
     createLot,
-    getLatestLots
+    getLatestLots,
+    getLastLot
   }

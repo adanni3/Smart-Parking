@@ -3,12 +3,13 @@ const validate = require("../utils/validate");
 const schema = require("../schemas/validationSchema");
 const lotController = require("../controllers/lotController");
 const lotrouter = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "uploads/"}); // Temp storage
 const middleware = require("../utils/middleware");
-const upload = require("../utils/cloudinary");
 
 lotrouter.post(
   "/",
-  upload.single("imageUrl"),
+   upload.single("image"),
   validate(schema.parkingSchema, "body"), 
   lotController.lotpost
 );
