@@ -30,8 +30,21 @@ cloudinary.config({
 //   public_id: `${lotName}-${Date.now()}`
 // });
 
+const uploadFromBuffer = (fileBuffer) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { resource_type: 'image' },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+    stream.end(fileBuffer);
+  });
+};
 
-// Configure Multer
-// const upload = multer({ storage: storage });
 
-module.exports = cloudinary;
+module.exports = {
+  cloudinary,
+  uploadFromBuffer
+};

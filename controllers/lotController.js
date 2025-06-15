@@ -5,13 +5,13 @@ const {classifyImage} = require("../services/classifyServices");
 const sharp     = require('sharp');    
 const logger = require("../utils/logger");
 const lotController = require("../services/lotServices");
-const cloudinary = require("../utils/cloudinary"); // You should have a helper for Cloudinary
+const {uploadFromBuffer} = require("../utils/cloudinary"); // You should have a helper for Cloudinary
 
 
 
 const lotpost = async (req, res, next) => {
   const { lotName } = req.body;
-  const originalPath = req.file.path;
+  const originalPath = req.file.buffer;
 
   try {
         /* Run local WASM classification */
@@ -22,16 +22,13 @@ const lotpost = async (req, res, next) => {
     console.log("previous",previous)
     if (!previous || previous.status !== newStatus) {
 
-      // const cloudRes = await cloudinary.uploader.upload(originalPath, {
-      //   folder: 'smart-parking',
-      //   public_id: `${lotName}-${Date.now()}`
-      // });
+    const result = await uploadFromBuffer(originalPath);
 
       const lot = await lotController.createLot({
         lotName,
         status: newStatus,
         timestamp: new Date(),
-        imageUrl: cloudRes.secure_url,
+        imageUrl: result.secure_url,
       });
 
       logger.info(`Lot ${lotName} updated (new status: ${newStatus})`);

@@ -4,7 +4,8 @@ const schema = require("../schemas/validationSchema");
 const lotController = require("../controllers/lotController");
 const lotrouter = express.Router();
 const multer = require("multer");
-const upload = multer({ dest: "uploads/"}); // Temp storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage}); // Temp storage
 const middleware = require("../utils/middleware");
 
 lotrouter.post(
