@@ -14,10 +14,7 @@
   ],
   "functions": {
     "index.js": {
-      "includeFiles": [
-        "wasm-models/lotA-model/**",
-        "wasm-models/lotB-model/**"
-      ]
+      "includeFiles": "wasm-models/**"
     }
   }
 }
