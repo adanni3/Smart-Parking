@@ -11,6 +11,14 @@
         "src": "/api/(.*)",
         "dest": "index.js"
       }
-    ]
+    ],    
+  "functions": {
+    "index.js": {
+      "includeFiles": [
+        "wasm-models/lotA-model/run-impulse.js",
+        "wasm-models/lotB-model/run-impulse.js"
+      ]
+    }
+  }
   }
   
