@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const config = require("./utils/config");
-const logger = require("./utils/logger");
+const config = require("./utils/config.js");
+const logger = require("./utils/logger.js");
 const lotRoutes = require("./routers/lotRoutes.js");
 
 const cors = require("cors");
-const middleware = require("./utils/middleware");
+const middleware = require("./utils/middleware.js");
 const app = express();
 const mongoose = require('mongoose');
 
