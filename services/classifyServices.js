@@ -1,5 +1,5 @@
 const sharp     = require('sharp');        // still used for cropping / resizing
-const logger    = require('../../utils/logger');
+const logger    = require('../utils/logger');
 
 
 /* LOAD THE WASM MODELS ONCE AT START-UP*/
