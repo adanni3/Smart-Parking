@@ -5,9 +5,8 @@
       "src": "/api/(.*)",
       "dest": "index.js"
     }
-  ],
-  "functions": {
-    "index.js": {
+  ],"functions": {
+    "api/index.js": {
       "includeFiles": "wasm-models/**"
     }
   }
