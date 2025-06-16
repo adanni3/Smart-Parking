@@ -1,5 +1,5 @@
 // Load the inferencing WebAssembly module
-const Module = require('./edge-impulse-standalone');
+const Module = require('./standalone');
 const fs = require('fs');
 const sharp     = require('sharp'); 
 
