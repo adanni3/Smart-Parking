@@ -2,11 +2,11 @@
   "version": 2,
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "index.js"
     }
   ],"functions": {
-    "api/index.js": {
+    "index.js": {
       "includeFiles": "wasm-models/**"
     }
   }
