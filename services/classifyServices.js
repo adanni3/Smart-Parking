@@ -2,6 +2,16 @@ const sharp     = require('sharp');        // still used for cropping / resizing
 const logger    = require('../utils/logger');
 
 
+function getHighestConfidenceClassification(resultsArray) {
+  if (!resultsArray || resultsArray.length === 0) {
+    return null; // Or throw an error, depending on desired behavior for empty input
+  }
+
+  return resultsArray.reduce((prev, current) => {
+    return (prev.confidence > current.confidence) ? prev : current;
+  });
+}
+
 /* LOAD THE WASM MODELS ONCE AT START-UP*/
 
 
@@ -15,8 +25,9 @@ async function classifyImage (fullImagePath, lotName) {
    
 const { convertToHexArray} = edgeImpulseModel[lotName];
  let label = await convertToHexArray(fullImagePath);
- label = label.results[0].label;
-  return label
+ let status = getHighestConfidenceClassification(label.results)
+ status = label.label;
+  return status
 } catch (err) {
   console.error('Failed to load models/ classify image', err);
 }
