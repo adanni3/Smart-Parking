@@ -209,7 +209,7 @@ async function runClassification(hexArray) {
 }
 
 // Then call it like this:
- answer = runClassification(hexArray);
+ answer = await runClassification(hexArray);
     return answer;
 }
 

@@ -204,12 +204,12 @@ async function runClassification(hexArray) {
     const result = classifier.classify(hexArray);
 
     // Log and return the result
-    console.log('ClassificationA result:', result);
-    return result;
+    console.log('ClassificationA result:', result.results);
+    return result.results;
 }
 
 // Then call it like this:
- answer = runClassification(hexArray);
+ answer = await runClassification(hexArray);
     return answer;
 }
 
