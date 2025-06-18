@@ -222,4 +222,3 @@ module.exports ={
     convertToHexArray
 }
 // Initialize the classifier, and invoke with the argument passed in
-

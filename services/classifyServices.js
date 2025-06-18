@@ -4,7 +4,8 @@ const logger    = require('../utils/logger');
 
 function getHighestConfidenceClassification(resultsArray) {
   if (!resultsArray || resultsArray.length === 0) {
-    return null; // Or throw an error, depending on desired behavior for empty input
+    console.log("error",resultsArray);
+    return resultsArray; // Or throw an error, depending on desired behavior for empty input
   }
   console.log("array",resultsArray)
   return resultsArray.reduce((prev, current) => {
