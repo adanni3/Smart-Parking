@@ -204,8 +204,8 @@ async function runClassification(hexArray) {
     const result = classifier.classify(hexArray);
 
     // Log and return the result
-    console.log('ClassificationB result:', result);
-    return result;
+    console.log('ClassificationB result:', result.results);
+    return result.results;
 }
 
 // Then call it like this:
